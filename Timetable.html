@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html>
+<head >
+	<title>Timetable</title>
+</head>
+<body>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+	<script type="text/javascript" src="http://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript">
+
+$(function () {
+
+
+
+
+    $('.SubjectsRight .SubjectModify ').draggable({
+        revert: true,
+        proxy: 'clone'
+    });
+    $('.MoreDragable').draggable({
+        revert: true
+    });
+
+
+    $('.CellDropped').droppable({
+        onDrop: function (e, source) {
+            var c = $(source).clone();
+
+
+            var table = $(this).children(0)[0]; 
+            
+
+            for (var i = 0; i < table.rows.length; i++) {
+                var cellTable = table.rows[i].cells[0];
+                if (cellTable.innerHTML === c.text())
+                    return;
+            }
+
+            
+            for (var i = 0; i < table.rows.length; i++) {
+                var cellTable = table.rows[i].cells[0];
+                if (cellTable.innerHTML === "") {
+                    cellTable.innerHTML = c.text();
+                    break;
+                }
+            }
+
+
+            if ($(source).hasClass('MoreDragable')) { 
+                $(source).text("");
+            }
+
+        }
+
+    });
+
+    $('.SubjectsRight').droppable({
+        onDragEnter: function (e, source) {
+            $(source).addClass('trash');
+        },
+        onDragLeave: function (e, source) {
+            $(source).removeClass('trash');
+        },
+        onDrop: function (e, source) {
+            if ($(source).hasClass('MoreDragable')) { 
+                $(source).text("");
+            }
+        }
+    });
+
+
+
+
+});
+
+
+</script>
+	<form id="form1">
+		<div style="width: auto;">
+
+             <div style="float: left; width: auto;">
+
+                 
+                  <table border="1" class="TimeTableLeft" style="border-collapse:collapse; border: 1px solid black;">
+	             	<tr>
+	             		<td width="100px">
+	             		</td>
+	             		<td width="100px">
+	             			Monday
+	             		</td>
+	             	
+	             		<td width="100px">
+	             			Tuesday
+	             		</td>
+	     
+	             		<td width="100px">
+	             			Wednesday
+	             		</td>
+	           
+	             		<td width="100px">
+	             			Thursday
+	             		</td>
+	             		<td width="100px">
+	             			Friday
+	             		</td>
+	             	</tr>
+	             	<tr>
+	             		<td> 8:00-9:00</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             	</tr>
+	             		             	<tr>
+	             		<td> 9:00-10:00</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             	</tr>
+	             	<tr>
+	             		<td> 10:00-11:00</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             	</tr>
+	             	<tr>
+	             		<td> 11:00-12:00</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             	</tr>
+	             	<tr>
+	             		<td> 12:00-13:00</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             	</tr>
+	             	<tr>
+	             		<td> 13:00-14:00</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             	</tr>
+	             	<tr>
+	             		<td> 14:00-15:00</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             	</tr>
+	             	<tr>
+	             		<td> 15:00-16:00</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             	</tr>
+	             	<tr>
+	             		<td> 16:00-17:00</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             		<td class="CellDropped">
+	             			<table>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             				<tr> 
+	             					<td class="MoreDragable"></td>
+	             				</tr>
+	             			</table>
+	             		</td>
+	             	</tr>
+
+
+
+
+
+	             </table>
+
+
+
+
+
+             </div>
+            
+             <div class="SubjectsRight" style="float: right; display: inline; margin-right: 4px;">
+             	 <table>
+             	 <th>
+             	 	Subjects
+             	 </th>
+	             	<tr>
+	             		<td class="SubjectModify">
+	             			Chemistry
+	             		</td>
+	             	</tr>
+	             	<tr>
+	             		<td class="SubjectModify">
+	             			Calculus
+	             		</td>
+	             	</tr>
+	             	<tr>
+	             		<td class="SubjectModify">
+	             			Physics
+	             		</td>
+	             	</tr>
+	             	<tr>
+	             		<td class="SubjectModify">
+	             			Language
+	             		</td>
+	             	</tr>
+	             	<tr>
+	             		<td class="SubjectModify">
+	             			Science
+	             		</td>
+	             	</tr>
+	             	<tr>
+	             		<td class="SubjectModify">
+	             			Music
+	             		</td>
+	             	</tr>
+	             </table>
+	        </div>
+         </div>
+	</form>
+</body>
+</html>
+
